@@ -59,8 +59,8 @@ export class TasksService {
   }
 
   deleteTask(id: string): void {
-    const index = this.tasks.findIndex((task) => task.id === id);
-    this.tasks.splice(index, 1);
+    const found = this.getTaskById(id);
+    this.tasks = this.tasks.filter((task) => task.id !== id);
   }
 
   updateTaskStatus(id: string, status: TaskStatus): Task {
